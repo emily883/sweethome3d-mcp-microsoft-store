@@ -49,7 +49,7 @@ Todo contra `http://127.0.0.1:9877`:
 - `GET /health` devuelve `{"status":"ok"}`.
 - `POST /mcp` con `initialize` devuelve `protocolVersion: 2025-03-26` y `serverInfo: { name: "sweethome3d", version: "1.2.0" }`, con su `Mcp-Session-Id` en la cabecera.
 - `tools/list` devuelve 46 herramientas.
-- Con `batch_commands` creé 13 paredes, 8 habitaciones, 14 cotas y una docena de etiquetas de una sola vez, y después `save_home` y `export_plan_image` escribieron el `.sh3d` y el PNG en `Documents` sin problema.
+- Con tres llamadas a `batch_commands` creé 13 paredes, 8 habitaciones, 14 cotas y 12 etiquetas (el plano de mi apartamento), y después `save_home` y `export_plan_image` escribieron el `.sh3d` y el PNG en `Documents` sin problema.
 
 El script [`scripts/smoke-test.mjs`](scripts/smoke-test.mjs) repite esa comprobación:
 
@@ -130,7 +130,7 @@ From inside the app's file dialog the plugin lives in `%APPDATA%\eTeks\Sweet Hom
 
 ### Verified
 
-`GET /health` → `{"status":"ok"}`. `initialize` → protocol `2025-03-26`, server `sweethome3d 1.2.0`. `tools/list` → 46 tools. A single `batch_commands` call created 13 walls, 8 rooms, 14 dimension lines and a dozen labels; `save_home` and `export_plan_image` wrote to `Documents`. `scripts/smoke-test.mjs` repeats the check; `scripts/demo-batch.mjs` draws a two-room demo (it clears the current scene first).
+`GET /health` → `{"status":"ok"}`. `initialize` → protocol `2025-03-26`, server `sweethome3d 1.2.0`. `tools/list` → 46 tools. Three `batch_commands` calls created 13 walls, 8 rooms, 14 dimension lines and 12 labels (my apartment's floor plan); `save_home` and `export_plan_image` wrote to `Documents`. `scripts/smoke-test.mjs` repeats the check; `scripts/demo-batch.mjs` draws a two-room demo (it clears the current scene first).
 
 ### What doesn't work on the Store build
 
